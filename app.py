@@ -1,5 +1,4 @@
 import json
-
 import nextcord
 from nextcord.ext import commands
 
@@ -14,21 +13,27 @@ bot = commands.Bot(command_prefix="", intents=intents)
 
 @bot.command(name="dog1")
 async def SendMEssage(ctx):
-    print(1)
-    with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(1, f, ensure_ascii=False, indent=4)
+    value = {
+        "animal": "dog1",
+        "number": 1,
+    }
+    print(json.dumps(value))
 
 @bot.command(name="dog2")
 async def SendMEssage(ctx):
-    print(2)
-    with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(2, f, ensure_ascii=False, indent=4)
+    value = {
+        "animal": "dog2",
+        "number": 2,
+    }
+    print(json.dumps(value))
 
 @bot.command(name="dog3")
 async def SendMEssage(ctx):
-    print(3)
-    with open('data.json', 'w', encoding='utf-8') as f:
-        json.dump(3, f, ensure_ascii=False, indent=4)
+    value = {
+        "animal": "dog3",
+        "number": 3,
+    }
+    print(json.dumps(value))
 
 
 @bot.event
