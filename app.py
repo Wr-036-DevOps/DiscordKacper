@@ -7,11 +7,6 @@ intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="", intents=intents)
 
-
-# hi
-# Hello
-
-
 @bot.command(name="dog1")
 async def SendMEssage(ctx):
     sqs_client = boto3.client("sqs")
@@ -55,4 +50,6 @@ async def on_ready():
 
 
 if __name__ == '__main__':
-    bot.run("MTAzNTU0MzE4NTM4MTkzMzA5Ng.Gr167o.9f6kMLwzsJus61j81TJz1w2VzMCkcwQPCRDnRo")
+
+    bot.run("KEY_HERE")
+
