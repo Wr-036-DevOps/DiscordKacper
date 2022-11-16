@@ -1,4 +1,5 @@
 import json
+import boto3
 import nextcord
 from nextcord.ext import commands
 
@@ -13,28 +14,40 @@ bot = commands.Bot(command_prefix="", intents=intents)
 
 @bot.command(name="dog1")
 async def SendMEssage(ctx):
-    value = {
-        "animal": "dog1",
-        "number": 1,
-    }
-    print(json.dumps(value))
+    sqs_client = boto3.client("sqs")
+    message = {
+        "animal": "dog",
+        "number": 1, }
+    response = sqs_client.send_message(
+        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        MessageBody=json.dumps(message)
+    )
+    print(response)
+
 
 @bot.command(name="dog2")
-async def SendMEssage(ctx):
-    value = {
-        "animal": "dog2",
-        "number": 2,
-    }
-    print(json.dumps(value))
+async def SendMessage(ctx):
+    sqs_client = boto3.client("sqs")
+    message = {
+        "animal": "dog",
+        "number": 2, }
+    response = sqs_client.send_message(
+        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        MessageBody=json.dumps(message)
+    )
+    print(response)
 
 @bot.command(name="dog3")
-async def SendMEssage(ctx):
-    value = {
-        "animal": "dog3",
-        "number": 3,
-    }
-    print(json.dumps(value))
-
+async def SendMessage(ctx):
+    sqs_client = boto3.client("sqs")
+    message = {
+        "animal": "dog",
+        "number": 3, }
+    response = sqs_client.send_message(
+        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        MessageBody=json.dumps(message)
+    )
+    print(response)
 
 @bot.event
 async def on_ready():
