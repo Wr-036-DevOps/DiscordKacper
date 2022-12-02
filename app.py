@@ -12,7 +12,7 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 
 @bot.command(name="dog")
 async def SendMEssage(ctx, arg):
-    sqs_client = boto3.client("sqs", region_name='us-east-1')
+    sqs_client = boto3.client("sqs", region_name="us-east-1")
     message = {
         "animal": "dog",
         "number": arg, }
