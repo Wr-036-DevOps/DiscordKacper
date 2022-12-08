@@ -13,4 +13,4 @@ ExecStart=/usr/bin/python3 /DiscordKacper/app.py
 [Install]
 WantedBy=multi-user.target
 __EOF__
-sudo systemctl enable --now Discord
+systemctl enable --now Discord
