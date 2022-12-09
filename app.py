@@ -12,12 +12,12 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 
 @bot.command(name="dog")
 async def SendMEssage(ctx, arg):
-    sqs_client = boto3.client("sqs", region_name="us-east-1")
+    sqs_client = boto3.client("sqs", region_name="eu-central-1")
     message = {
         "animal": "dog",
         "number": arg, }
     response = sqs_client.send_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
         MessageBody=json.dumps(message)
     )
     print(response)
@@ -30,7 +30,7 @@ async def SendMEssage(ctx, arg):
         "animal": "cat",
         "number": arg, }
     response = sqs_client.send_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
         MessageBody=json.dumps(message)
     )
     print(response)
@@ -42,7 +42,7 @@ async def SendMEssage(ctx, arg):
         "animal": "elephant",
         "number": arg, }
     response = sqs_client.send_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+        QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
         MessageBody=json.dumps(message)
     )
     print(response)
