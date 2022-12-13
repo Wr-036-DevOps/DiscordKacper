@@ -11,47 +11,55 @@ intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
-go
+
 @bot.command(name="dog")
 async def SendMEssage(ctx, arg):
-    sqs_client = boto3.client("sqs")
-    message = {
-        "animal": "dog",
-        "number": arg, }  # {"animal": "dog", "number": "n"}
-    response = sqs_client.send_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
-        MessageBody=json.dumps(message)
-    )
-    print(response)
+    sqs_client = boto3.client("sqs", region_name="eu-central-1")
+    if int(arg) < 5:
+        message = {
+            "animal": "dog",
+            "number": arg, }  # {"animal": "dog", "number": "n"}
+        response = sqs_client.send_message(
+            QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
+            MessageBody=json.dumps(message)
+        )
+        print(response)
+    else:
+        print("Too much images")
 
 
 @bot.command(name="cat")
 async def SendMEssage(ctx, arg):
     sqs_client = boto3.client("sqs")
-    if arg < 5:
+
+    if int(arg) < 5:
         message = {
             "animal": "cat",
             "number": arg, }
         response = sqs_client.send_message(
-            QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
+            QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
             MessageBody=json.dumps(message)
         )
         print(response)
     else:
-        print("error6969")
+        print("Too much images")
 
 
 @bot.command(name="elephant")
 async def SendMEssage(ctx, arg):
     sqs_client = boto3.client("sqs")
-    message = {
-        "animal": "elephant",
-        "number": arg, }
-    response = sqs_client.send_message(
-        QueueUrl="https://sqs.us-east-1.amazonaws.com/536460581283/akaque",
-        MessageBody=json.dumps(message)
-    )
-    print(response)
+
+    if int(arg) < 5:
+        message = {
+            "animal": "elephant",
+            "number": arg, }
+        response = sqs_client.send_message(
+            QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
+            MessageBody=json.dumps(message)
+        )
+        print(response)
+    else:
+        print("Too much images")
 
 
 @bot.event
