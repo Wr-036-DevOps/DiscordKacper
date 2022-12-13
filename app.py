@@ -15,7 +15,7 @@ bot = commands.Bot(command_prefix="/", intents=intents)
 @bot.command(name="dog")
 async def SendMEssage(ctx, arg):
     sqs_client = boto3.client("sqs", region_name="eu-central-1")
-    if int(arg) < 5:
+    if int(arg) < 6:
         message = {
             "animal": "dog",
             "number": arg, }  # {"animal": "dog", "number": "n"}
@@ -32,7 +32,7 @@ async def SendMEssage(ctx, arg):
 async def SendMEssage(ctx, arg):
     sqs_client = boto3.client("sqs")
 
-    if int(arg) < 5:
+    if int(arg) < 6:
         message = {
             "animal": "cat",
             "number": arg, }
@@ -49,7 +49,7 @@ async def SendMEssage(ctx, arg):
 async def SendMEssage(ctx, arg):
     sqs_client = boto3.client("sqs")
 
-    if int(arg) < 5:
+    if int(arg) < 6:
         message = {
             "animal": "elephant",
             "number": arg, }
