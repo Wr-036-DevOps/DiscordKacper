@@ -25,6 +25,8 @@ async def SendMEssage(ctx, arg):
         )
         print(response)
     else:
+        channel = bot.get_channel(1034847969255628884)
+        await channel.send("Too much images - max number is: 5")
         print("Too much images")
 
 
@@ -42,6 +44,8 @@ async def SendMEssage(ctx, arg):
         )
         print(response)
     else:
+        channel = bot.get_channel(1034847969255628884)
+        await channel.send("Too much images - max number is: 5")
         print("Too much images")
 
 
@@ -59,6 +63,8 @@ async def SendMEssage(ctx, arg):
         )
         print(response)
     else:
+        channel = bot.get_channel(1034847969255628884)
+        await channel.send("Too much images - max number is: 5")
         print("Too much images")
 
 
