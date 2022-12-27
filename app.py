@@ -11,62 +11,29 @@ intents = nextcord.Intents.default()
 intents.message_content = True
 bot = commands.Bot(command_prefix="/", intents=intents)
 
-
-@bot.command(name="dog")
-async def SendMEssage(ctx, arg):
+@bot.command(aliases=["show"])
+async def SendMEssage(ctx,search,*,arg:int):
+    animalList = ["dog", "cat", "elephant","monkey","lion","shark","bird","bear","fish","horse","chicken"]
+    
     sqs_client = boto3.client("sqs", region_name="eu-central-1")
-    if int(arg) < 6:
+    
+    if arg < 6 and search in animalList:
         message = {
-            "animal": "dog",
-            "number": arg, }  # {"animal": "dog", "number": "n"}
+            "animal": search,
+            "number": arg, } 
         response = sqs_client.send_message(
             QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
             MessageBody=json.dumps(message)
         )
         print(response)
-    else:
+    elif arg>=6:
         channel = bot.get_channel(1034847969255628884)
         await channel.send("Too much images - max number is: 5")
-        print("Too much images")
-
-
-@bot.command(name="cat")
-async def SendMEssage(ctx, arg):
-    sqs_client = boto3.client("sqs")
-
-    if int(arg) < 6:
-        message = {
-            "animal": "cat",
-            "number": arg, }
-        response = sqs_client.send_message(
-            QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
-            MessageBody=json.dumps(message)
-        )
-        print(response)
+        print("Too much images")  
     else:
         channel = bot.get_channel(1034847969255628884)
-        await channel.send("Too much images - max number is: 5")
-        print("Too much images")
-
-
-@bot.command(name="elephant")
-async def SendMEssage(ctx, arg):
-    sqs_client = boto3.client("sqs")
-
-    if int(arg) < 6:
-        message = {
-            "animal": "elephant",
-            "number": arg, }
-        response = sqs_client.send_message(
-            QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
-            MessageBody=json.dumps(message)
-        )
-        print(response)
-    else:
-        channel = bot.get_channel(1034847969255628884)
-        await channel.send("Too much images - max number is: 5")
-        print("Too much images")
-
+        await channel.send("This animal not exist available animals are: {}".format(animalList))
+        print("This animal not exist available animals are:")
 
 @bot.event
 async def on_ready():
