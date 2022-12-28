@@ -25,6 +25,8 @@ async def SendMEssage(ctx,search,*,arg:int):
             QueueUrl="https://sqs.eu-central-1.amazonaws.com/536460581283/akaque",
             MessageBody=json.dumps(message)
         )
+        channel = bot.get_channel(1034847969255628884)
+        await channel.send(":thumbsup:")
         print(response)
     elif arg>=6:
         channel = bot.get_channel(1034847969255628884)
